@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Disable scroll wheel on number inputs */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Prevent scroll wheel from changing number input values */
+input[type='number']:focus {
+  outline: none;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* TickerCard Button Styles */
+.ticker-button {
+  cursor: pointer;
+  position: relative;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 34px;
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.ticker-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.ticker-button-buy {
+  color: #10B981;
+  border-color: #10B981;
+}
+
+.ticker-button-buy::before {
+  background-color: #10B981;
+}
+
+.ticker-button-buy:hover:not(.disabled)::before {
+  scale: 3;
+}
+
+.ticker-button-buy:hover:not(.disabled) {
+  color: #212121;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(16, 185, 129, 0.4);
+}
+
+.ticker-button-sell {
+  color: #EF4444;
+  border-color: #EF4444;
+}
+
+.ticker-button-sell::before {
+  background-color: #EF4444;
+}
+
+.ticker-button-sell:hover:not(.disabled)::before {
+  scale: 3;
+}
+
+.ticker-button-sell:hover:not(.disabled) {
+  color: #212121;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(239, 68, 68, 0.4);
+}
+
+.ticker-button:active:not(.disabled) {
+  scale: 1;
+}
+
+.ticker-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

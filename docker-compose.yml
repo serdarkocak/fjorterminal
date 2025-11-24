@@ -1,0 +1,63 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: fjor-mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"${SA_PASSWORD}\" -Q \"SELECT 1\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  redis:
+    image: redis:7-alpine
+    container_name: fjor-redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build:
+      context: ./FjorTerminal.Backend
+      dockerfile: Dockerfile.backend
+    container_name: fjor-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5067
+      - ConnectionStrings__DefaultConnection=Server=mssql;Database=FjorTerminalDb;User Id=sa;Password=${SA_PASSWORD};TrustServerCertificate=True;Connect Timeout=30;MultipleActiveResultSets=True;
+      - Redis__ConnectionString=redis:6379
+      - Cors__AllowedOrigins__0=http://localhost:5173
+    depends_on:
+      mssql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    ports:
+      - "5067:5067"
+
+  frontend:
+    image: node:20-alpine
+    container_name: fjor-frontend
+    working_dir: /app
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+    environment:
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
+    volumes:
+      - ./:/app
+    ports:
+      - "5173:5173"
+
+volumes:
+  mssql_data:
+  redis_data:
+
+
