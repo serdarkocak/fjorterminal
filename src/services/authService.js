@@ -1,7 +1,7 @@
 // Authentication Service for FjorTerminal
 // Handles user login, registration, and token management
 
-const API_BASE_URL = 'http://localhost:5067/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL + '/api/v1';
 
 class AuthService {
   constructor() {
