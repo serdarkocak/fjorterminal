@@ -3,7 +3,7 @@ FROM node:20 AS build
 
 WORKDIR /app
 
-# GLOBAL VITE KURULUYOR — ÇÖZÜM BUDUR
+
 RUN npm install -g vite
 
 COPY package*.json ./
@@ -12,7 +12,7 @@ RUN npm install
 
 COPY . .
 
-# Global vite üzerinden build alıyoruz
+
 RUN node_modules/.bin/vite --version || true
 RUN vite build
 
