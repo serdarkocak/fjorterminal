@@ -1,6 +1,6 @@
 # ----- Build Stage -----
 
-FROM node:20-alpine AS build
+FROM node:20 AS build
 
 WORKDIR /app
 
@@ -9,12 +9,9 @@ COPY package*.json ./
 RUN npm install
 
 
-RUN chmod +x node_modules/.bin/*
-
-
 COPY . .
 
-# Build al
+# Build
 RUN npm run build
 
 # ----- Deploy Stage -----
@@ -24,7 +21,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 
-RUN sed -i 's/try_files.*/try_files \$uri \$uri\/ \/index.html;/' /etc/nginx/conf.d/default.conf
+RUN sed -i 's/try_files.*/try_files $uri $uri\/ \/index.html;/' /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
