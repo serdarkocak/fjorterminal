@@ -3,7 +3,7 @@ const DEFAULT_NEWS_SOURCES = [
   {
     id: 'coindesk',
     name: 'CoinDesk',
-    url: '/api/rss/coindesk',
+    url: 'https://www.coindesk.com/arc/outboundfeeds/rss/',
     type: 'rss',
     category: 'crypto',
     enabled: true
@@ -11,7 +11,7 @@ const DEFAULT_NEWS_SOURCES = [
   {
     id: 'coinkolik',
     name: 'CoinKolik',
-    url: '/api/rss/coinkolik',
+    url: 'https://coinkolik.com/feed/',
     type: 'rss',
     category: 'crypto',
     enabled: true
@@ -19,7 +19,7 @@ const DEFAULT_NEWS_SOURCES = [
   {
     id: 'uzmancoin',
     name: 'UzmanCoin',
-    url: '/api/rss/uzmancoin',
+    url: 'https://uzmancoin.com/feed/',
     type: 'rss',
     category: 'crypto',
     enabled: true
