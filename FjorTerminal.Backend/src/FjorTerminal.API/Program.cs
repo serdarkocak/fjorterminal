@@ -231,17 +231,15 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
-else
-{
-    // In production, disable Swagger
-    // Only enable HTTPS redirection if behind a proxy that handles SSL termination
-    // app.UseHttpsRedirection();
-}
+
+
+
+
+app.UseHttpsRedirection();
+
 
 app.UseCors("AllowFrontend");
 
