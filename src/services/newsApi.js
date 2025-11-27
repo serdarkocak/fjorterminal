@@ -213,7 +213,7 @@ export const fetchRSSFeed = async (source) => {
       // Route through backend to bypass CORS
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '';
       const backendUrl = apiBaseUrl || '/api';
-      fetchUrl = `${backendUrl}/News/rss?url=${encodeURIComponent(source.url)}`;
+      fetchUrl = `${backendUrl}/api/News/rss?url=${encodeURIComponent(source.url)}`;
       console.log(`Routing external RSS feed through backend: ${source.name}`);
       
       const response = await fetch(fetchUrl);
