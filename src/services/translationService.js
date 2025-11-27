@@ -1,5 +1,4 @@
-// DeepL API Key
-const DEEPL_API_KEY = '1a55c35e-1990-485b-86c0-3da7ec7d0831:fx';
+
 
 // DeepL API endpoint (using Vite proxy)
 const DEEPL_API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/translate/deepl`;
