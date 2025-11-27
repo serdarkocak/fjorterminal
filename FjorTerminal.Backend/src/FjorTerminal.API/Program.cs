@@ -21,7 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
             errorNumbersToAdd: null
         )
     ));
-
+builder.Services.AddHttpClient();
 // Add Redis
 var redisConnection = builder.Configuration.GetValue<string>("Redis:ConnectionString") ?? string.Empty;
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
