@@ -61,3 +61,4 @@ C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Infra
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Infrastructure\obj\Debug\net9.0\FjorTerminal.Infrastructure.pdb
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Infrastructure\obj\Debug\net9.0\FjorTerminal.Infrastructure.genruntimeconfig.cache
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Infrastructure\obj\Debug\net9.0\ref\FjorTerminal.Infrastructure.dll
+C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Infrastructure\obj\Debug\net9.0\FjorTerminal.Infrastructure.sourcelink.json

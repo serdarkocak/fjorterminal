@@ -532,3 +532,4 @@ C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.API\o
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.API\obj\Debug\net9.0\FjorTerminal.API.pdb
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.API\obj\Debug\net9.0\FjorTerminal.API.genruntimeconfig.cache
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.API\obj\Debug\net9.0\ref\FjorTerminal.API.dll
+C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.API\obj\Debug\net9.0\FjorTerminal.API.sourcelink.json

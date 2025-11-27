@@ -23,7 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     ));
 
 // Add Redis
-var redisConnection = builder.Configuration.GetValue<string>("Redis:ConnectionString") ?? "172.18.94.222:6379";
+var redisConnection = builder.Configuration.GetValue<string>("Redis:ConnectionString") ?? string.Empty;
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 {
     try
@@ -156,10 +156,23 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? new[] { "http://localhost:5173" })
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials();
+        var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
+            ?? Array.Empty<string>();
+        
+        if (allowedOrigins.Length > 0)
+        {
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials();
+        }
+        else
+        {
+            // Fallback: Allow all origins in production if not configured (should be configured via env vars)
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        }
     });
 });
 
@@ -223,8 +236,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
+else
+{
+    // In production, disable Swagger
+    // Only enable HTTPS redirection if behind a proxy that handles SSL termination
+    // app.UseHttpsRedirection();
+}
 
 app.UseCors("AllowFrontend");
 

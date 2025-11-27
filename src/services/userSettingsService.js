@@ -2,7 +2,8 @@ import authService from './authService';
 
 class UserSettingsService {
   constructor() {
-    this.baseURL = 'http://localhost:5067/api';
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '';
+    this.baseURL = apiBaseUrl ? `${apiBaseUrl}/api` : '/api';
   }
 
   async getAuthHeaders() {

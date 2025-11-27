@@ -31,3 +31,4 @@ C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Share
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Shared\obj\Debug\net9.0\refint\FjorTerminal.Shared.dll
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Shared\obj\Debug\net9.0\FjorTerminal.Shared.pdb
 C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Shared\obj\Debug\net9.0\ref\FjorTerminal.Shared.dll
+C:\Users\serda\fjor-crypto-dashboard\FjorTerminal.Backend\src\FjorTerminal.Shared\obj\Debug\net9.0\FjorTerminal.Shared.sourcelink.json
