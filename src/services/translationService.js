@@ -1,7 +1,7 @@
 
 
 // DeepL API endpoint (using Vite proxy)
-const DEEPL_API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/translate/deepl`;
+const DEEPL_API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/deepl/translate`;
 
 
 /**
