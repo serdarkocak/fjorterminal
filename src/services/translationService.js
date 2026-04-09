@@ -1,8 +1,8 @@
 
 const DEEPL_API_KEY = import.meta.env.VITE_DEEPL_API_KEY;
 // DeepL API endpoint (using Vite proxy)
-const DEEPL_API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/translate/deepl`;
-
+/ DeepL API endpoint (using Vite proxy)
+const DEEPL_API_URL = '${import.meta.env.VITE_API_BASE_URL}/api/deepl/translate';
 
 /**
  * Translate text from English to Turkish using DeepL API with retry mechanism
@@ -33,13 +33,13 @@ export const translateToTurkish = async (text, retryCount = 0) => {
     const response = await fetch(DEEPL_API_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
+        'Authorization': `DeepL-Auth-Key ${DEEPL_API_KEY}`
       },
-      body: new URLSearchParams({
-        'auth_key': DEEPL_API_KEY,
-        'text': text,
-        'target_lang': 'TR',
-        'source_lang': 'EN'
+      body: JSON.stringify({
+        text: [text],
+        target_lang: 'TR',
+        source_lang: 'EN'
       })
     });
 
@@ -188,3 +188,4 @@ export default {
   translateNewsItem,
   translateNewsItems
 };
+
