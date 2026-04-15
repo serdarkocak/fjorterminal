@@ -8,14 +8,15 @@ services:
     # PORTS BÖLÜMÜNÜ SİLDİK: Botlar artık giremez
     volumes:
       - mssql_data:/var/opt/mssql
+    networks:
+      - fjor-network
     healthcheck:
       test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"${SA_PASSWORD}\" -Q \"SELECT 1\" || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 10
       start_period: 30s
-      networks:
-      - fjor-network
+     
 
   redis:
     image: redis:7-alpine
@@ -43,7 +44,7 @@ services:
         condition: service_started
     ports:
       - "5067:5067"
-      networks:
+    networks:
       - fjor-network
 
   frontend:
@@ -62,6 +63,6 @@ volumes:
   mssql_data:
   redis_data:
 
-  networks:
+networks:
   fjor-network:
     driver: bridge
