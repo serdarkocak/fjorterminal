@@ -124,7 +124,7 @@ class BinanceWebSocketManager {
    */
   buildUrl(streams) {
     const streamsStr = streams.join('/');
-    return `wss://fstream.binance.com/stream?streams=${streamsStr}`;
+    return `wss://fstream.binance.com/market/stream?streams=${streamsStr}`;
   }
 
   /**
